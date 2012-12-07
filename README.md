@@ -12,7 +12,7 @@ COMPILE TOOLS
 
 AUTHORS
 =============
-- 
+- Lesha Bogdanow 
 
 LINKS
 =============
