@@ -1,0 +1,39 @@
+/*********** CLIPBRD C Sample Program Resource Script File (.RC) ***********
+ *
+ ******************************************************************************/
+
+
+#define INCL_PM
+#include <os2.h>
+#include "LBCSMixRes.h"
+
+ICON ID_RESOURCE LBCSMix.ico
+
+STRINGTABLE
+{
+    IDS_TITLE,                  "LB Crystal Mode 2 Mixer v.1.00"
+    IDS_SWTITLE,                "LB Crystal Mixer"
+    IDS_MIC,		"Mic"
+    IDS_MIX,		"Mix"
+}
+
+MESSAGETABLE
+{
+ IDMSG_INITFAILED          	"Initialization failed."
+ IDMSG_MAINWINCREATEFAILED 	"Failed to create main window."
+}
+
+/*ACCELTABLE ID_ACCEL
+{
+    VK_SPACE, ID_MA_PAUSE,     VIRTUALKEY
+    VK_LEFT, ID_MA_REWND,     VIRTUALKEY
+    VK_RIGHT, ID_MA_FFWD,     VIRTUALKEY
+    VK_UP,	ID_MA_PREV,     VIRTUALKEY
+    VK_DOWN,	ID_MA_NEXT,     VIRTUALKEY
+    "x",	ID_MA_QUIT,	ALT
+    "X",	ID_MA_QUIT,	ALT
+    VK_ESC,	ID_MA_QUIT,     VIRTUALKEY
+}*/
+
+rcinclude Dialogs.dlg
+

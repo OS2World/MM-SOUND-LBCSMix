@@ -1,0 +1,21 @@
+CC=gcc -c -Zomf -Zsys -Id:/emx/include -Id:/os2_apps/warptoolkit/h -xc -funsigned-char -O2
+LINK=emxomfld -s
+LIBDIR= -LD:\emx\lib -LD:\emx\lib\st
+LIBS=  -lc_alias -lgcc -lc -lc_app -lsys -los2 -lend
+
+all     :  LBCSMix.exe
+
+LBCSMix.EXE: LBCSMix.obj LBCSMix.def LBCSMix.res
+	$(LINK) -o LBCSMix.EXE $(LIBDIR) $(LIBS) d:\emx\lib\crt0.obj LBCSMix.obj LBCSMix.def
+	rc LBCSMix.res
+
+clean:
+	del *.obj
+	del LBCSMix.exe
+	del LBCSMix.res
+
+LBCSMix.obj :   LBCSMix.c LBCSMixRes.h LBCSMix.h
+	$(CC) LBCSMix.c 
+LBCSMix.res :   LBCSMix.rc Dialogs.dlg LBCSMix.ico
+	rc -r LBCSMix.rc
+

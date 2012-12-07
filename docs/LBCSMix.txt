@@ -1,0 +1,88 @@
+	LBCSMix v.1.00. A mixer for Crystal Semiconductors mode 2 codecs.
+
+
+This is free software. It is distributed under GNU General Public License.
+See file COPYING for details. There is NO WARRANTY. Use it at your own risk.
+
+			INTRO
+
+This is a simple mixer for Crystal Semiconductors mode 2 codecs (i.e. those
+that work with version 1.xx drivers).
+
+
+			INSTALLATION
+
+Unpack the archive into a directory. If you install the mixer for the first time
+then run install.cmd script, it will ask you about the card you use, then
+create initial configyration and desktop object. Or simply launch the
+executable and press Settings button to enter the configuration menu and 
+specify the base port (the value specified in /P parameter of
+BASEDEV=CWCONFIG.SYS in CONFIG.SYS). If you're updating from the previous
+version then run update.cmd script that will remove window parameters stored
+by the previous version from user ini file.
+
+
+			USAGE
+
+The codecs have 3 general purpose stereo inputs called Line, AUX1, AUX2
+and a general purpose mono input called Mono. The assignment of those inputs
+depends upon audio card design so their names can be redefined in the Settings
+dialog to reflect your card's inputs assignment. Mono is usually either unused
+or connected to motherboard's PC Speaker output. Stereo inputs are usually
+connected to CD audio output, MIDI synth and Line In connector.
+
+You can run only once copy at the same time, if you try to start another copy
+at the same time it will beep and terminate immediately.
+
+To use the lock feature you have to specify the lock rate in the settings
+dialog. The lock rate is specified in milliseconds, the minimum is 1, the
+maximum is 10000. However the real lock rate is specified in 55ms increments,
+thus specifying values from 1 to 55 ms will result in 55 ms real lock rate.
+If you don't intend to use the lock feature you'd better leave the lock rate
+field in the settings dialog empty (thus not wasting your system resources 
+running unnesessary lock thread).
+
+You'd better keep all the unused inputs muted to minimize the noise level.
+
+The user ini application name used to store mixer's data is "LBCSMix".
+
+
+		INPUTS ASSIGNMENT FOR SOME CARDS
+
+Right now I can tell only about Turtle Beach TBS-2000 inputs assignment:
+AUX1 = Line In, AUX2 = CD, Line = internal MIDI synth (probably, I've never
+used it really), Mono - unused.
+
+For other cards you have to play with gain controls while listening to a music
+from different sources to figure out your card's inputs assignment.
+
+
+			CONTACT
+
+You can send your bug reports and suggestions to e-mail
+boga@fly.triniti.troitsk.ru or FIDO 2:5095/9. I'd appreciate if you send
+me input assignments of different cards not listed in this file. The lastest
+version of the mixer can be downloaded from
+http://freebyte.ml.org/~boga/OS2Programs.html where you can also find a
+couple of other useful OS/2 programs.
+
+
+			HISTORY
+
+0.01	- Initial version.
+0.02	- Added ADC parameters setting.
+	- Added a simple installation script.
+	- Lock and Both states are now stored.
+        - Mixer state is stored.
+	- Either stored mixer state is restored on startup or
+          mixer controls are initialized with values read from the chip
+          (depending on "Restore mixer state on startup" option).
+	- Now you can't start more than one copy of mixer at the same time.
+	- Window position is now stored.
+	- Setting are now stored in user ini file.
+	- Added About box.
+	- Lock is moved from the main thread to a separate thread with time
+ 	  critical priority.
+0.03	- Re-designed main dialog to make it smaller
+	- Added update.cmd script
+1.00	- Released.

@@ -1,0 +1,148 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "F:\CSMix\LBCSMixRes.h"
+
+DLGTEMPLATE IDD_SETTINGS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Settings", IDD_SETTINGS, 81, 19, 168, 114, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        RTEXT           "Base Port:", 101, 4, 24, 53, 8
+        ENTRYFIELD      "", IDC_BASEPORT, 61, 24, 32, 8, ES_MARGIN
+        RTEXT           "Line Name:", 103, 4, 96, 53, 8
+        ENTRYFIELD      "", IDC_LINENAME, 61, 97, 95, 8, ES_MARGIN
+        RTEXT           "AUX1 Name:", 105, 2, 82, 55, 8
+        ENTRYFIELD      "", IDC_AUX1NAME, 61, 83, 95, 8, ES_MARGIN
+        RTEXT           "AUX2 Name:", 107, 4, 68, 53, 8
+        ENTRYFIELD      "", IDC_AUX2NAME, 61, 69, 96, 8, ES_MARGIN
+        RTEXT           "Mono Name:", 109, 1, 54, 56, 8
+        ENTRYFIELD      "", IDC_MONONAME, 61, 55, 96, 8, ES_MARGIN
+        RTEXT           "Lock Rate:", 111, 3, 10, 54, 8
+        ENTRYFIELD      "", IDC_LOCKRATE, 61, 10, 32, 8, ES_MARGIN
+        DEFPUSHBUTTON   "OK", IDC_OK, 119, 22, 40, 14, WS_DISABLED
+        PUSHBUTTON      "Cancel", IDC_CANCEL, 119, 7, 40, 14
+        AUTOCHECKBOX    "Restore mixer state on startup", IDC_RESTORE, 9, 39, 
+                        145, 10
+    END
+END
+
+DLGTEMPLATE ID_RESOURCE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Crystal mode 2 Mixer", ID_RESOURCE, -44, -4, 316, 133, 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR | FCF_MINBUTTON
+    BEGIN
+        GROUPBOX        "DAC", IDC_DACGRP, 4, 22, 39, 106, WS_DISABLED
+        AUTOCHECKBOX    "", IDC_LEFTMUTE, 13, 109, 11, 10, WS_DISABLED
+        AUTOCHECKBOX    "", IDC_RIGHTMUTE, 29, 109, 10, 10, WS_DISABLED
+        SLIDER          IDC_LEFTVOL, 10, 48, 16, 60, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 128, 0, 0, 0
+        SLIDER          IDC_RIGHTVOL, 25, 48, 16, 60, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 128, 0, 0, 0
+        AUTOCHECKBOX    "Both", IDC_DACBOTH, 10, 36, 32, 10, WS_DISABLED
+        AUTOCHECKBOX    "Lock", IDC_DACLOCK, 10, 26, 32, 10, WS_DISABLED
+        GROUPBOX        "ADC", IDC_ADCGRP, 271, 22, 40, 106, WS_DISABLED
+        SLIDER          IDC_ADCLEFTVOL, 274, 68, 16, 50, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 16, 0, 0, 0
+        SLIDER          IDC_ADCRIGHTVOL, 292, 68, 16, 50, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 16, 0, 0, 0
+        AUTOCHECKBOX    "", IDC_ADCLEFT20, 279, 46, 10, 10, WS_DISABLED
+        AUTOCHECKBOX    "", IDC_ADCRIGHT20, 295, 46, 10, 10, WS_DISABLED
+        AUTOCHECKBOX    "Both", IDC_ADCBOTH, 276, 36, 32, 10, WS_DISABLED
+        AUTOCHECKBOX    "Lock", IDC_ADCLOCK, 276, 26, 32, 10, WS_DISABLED
+        GROUPBOX        "AUX2", IDC_AUX2GRP, 129, 22, 40, 106, WS_DISABLED
+        AUTOCHECKBOX    "", IDC_AUX2LEFTMUTE, 137, 109, 11, 10, WS_DISABLED
+        AUTOCHECKBOX    "", IDC_AUX2RIGHTMUTE, 153, 109, 11, 10, WS_DISABLED
+        AUTOCHECKBOX    "Both", IDC_AUX2BOTH, 134, 36, 31, 10, WS_DISABLED
+        AUTOCHECKBOX    "Lock", IDC_AUX2LOCK, 134, 26, 32, 10, WS_DISABLED
+        SLIDER          IDC_AUX2LEFTVOL, 133, 48, 16, 60, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 32, 0, 0, 0
+        SLIDER          IDC_AUX2RIGHTVOL, 149, 48, 16, 60, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 32, 0, 0, 0
+        GROUPBOX        "AUX1", IDC_AUX1GRP, 87, 22, 40, 106, WS_DISABLED
+        AUTOCHECKBOX    "", IDC_AUX1LEFTMUTE, 93, 109, 10, 10, WS_DISABLED
+        AUTOCHECKBOX    "", IDC_AUX1RIGHTMUTE, 111, 109, 10, 10, WS_DISABLED
+        AUTOCHECKBOX    "Both", IDC_AUX1BOTH, 91, 36, 32, 10, WS_DISABLED
+        AUTOCHECKBOX    "Lock", IDC_AUX1LOCK, 91, 26, 31, 10, WS_DISABLED
+        SLIDER          IDC_AUX1LEFTVOL, 90, 48, 16, 60, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 32, 0, 0, 0
+        SLIDER          IDC_AUX1RIGHTVOL, 107, 48, 16, 60, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 32, 0, 0, 0
+        GROUPBOX        "Loop", IDC_LOOPGRP, 229, 22, 40, 82, WS_DISABLED
+        SLIDER          IDC_LOOPVOL, 232, 49, 16, 36, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 64, 0, 0, 0
+        AUTOCHECKBOX    "", IDC_LOOPEN, 236, 85, 11, 10, WS_DISABLED
+        GROUPBOX        "Line", IDC_LINEGRP, 45, 22, 40, 106, WS_DISABLED
+        AUTOCHECKBOX    "", IDC_LINELEFTMUTE, 53, 109, 11, 10, WS_DISABLED
+        AUTOCHECKBOX    "", IDC_LINERIGHTMUTE, 69, 109, 11, 10, WS_DISABLED
+        AUTOCHECKBOX    "Both", IDC_LINEBOTH, 50, 36, 32, 10, WS_DISABLED
+        AUTOCHECKBOX    "Lock", IDC_LINELOCK, 50, 26, 32, 10, WS_DISABLED
+        SLIDER          IDC_LINELEFTVOL, 49, 48, 16, 60, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 32, 0, 0, 0
+        SLIDER          IDC_LINERIGHTVOL, 65, 48, 16, 60, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 32, 0, 0, 0
+        GROUPBOX        "Mono", IDC_MONOGRP, 171, 22, 56, 82, WS_DISABLED
+        SLIDER          IDC_MONOVOL, 174, 56, 16, 30, SLS_VERTICAL | 
+                        SLS_SNAPTOINCREMENT | SLS_HOMETOP | WS_GROUP | 
+                        WS_DISABLED
+                        CTLDATA 12, 0, 16, 0, 0, 0
+        AUTOCHECKBOX    "Bypass", IDC_MONOBYPASS, 174, 46, 40, 10, 
+                        WS_DISABLED
+        AUTOCHECKBOX    "O Mute", IDC_MONOOMUTE, 174, 36, 41, 10, 
+                        WS_DISABLED
+        AUTOCHECKBOX    "", IDC_MONOIMUTE, 178, 85, 11, 10, WS_DISABLED
+        PUSHBUTTON      "Settings", IDC_SETTINGS, 99, 4, 45, 14
+        PUSHBUTTON      "Exit", IDC_EXIT, 193, 4, 33, 14
+        AUTOCHECKBOX    "Lock", IDC_MONOLOCK, 174, 26, 35, 10, WS_DISABLED
+        AUTOCHECKBOX    "Lock", IDC_LOOPLOCK, 233, 26, 32, 10, WS_DISABLED
+        CONTROL         "", IDC_ADCLEFTSRC, 175, 76, 44, 44, WC_COMBOBOX, 
+                        CBS_DROPDOWNLIST | WS_GROUP | WS_TABSTOP | 
+                        WS_VISIBLE | WS_DISABLED
+        CONTROL         "", IDC_ADCRIGHTSRC, 222, 76, 44, 44, WC_COMBOBOX, 
+                        CBS_DROPDOWNLIST | WS_GROUP | WS_TABSTOP | 
+                        WS_VISIBLE | WS_DISABLED
+        PUSHBUTTON      "About", IDC_ABOUT, 149, 4, 40, 14
+        GROUPBOX        "ADC Source", IDC_ADCSOURCE, 171, 105, 98, 23, 
+                        WS_DISABLED
+        CTEXT           "+20dB", IDC_ADC20DB, 276, 57, 31, 8, WS_DISABLED
+    END
+END
+
+DLGTEMPLATE IDD_ABOUT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "About", IDD_ABOUT, 42, 31, 202, 101, WS_VISIBLE, FCF_SYSMENU | 
+            FCF_TITLEBAR
+    BEGIN
+        CTEXT           "LB Crystal Mode 2 Mixer", IDC_ABOUTAPP, 4, 83, 193, 
+                        8
+        CTEXT           "This is free software. ", 103, 3, 54, 194, 8
+        CTEXT           "See file COPYING for for license details.", 104, 3, 
+                        43, 196, 8
+        CTEXT           "NO WARRANTY, use it on your own risk.", 105, 6, 33, 
+                        190, 8
+        DEFPUSHBUTTON   "Ok", IDC_OK, 80, 6, 40, 14
+        CTEXT           "by Lesha Bogdanow", 3002, 7, 74, 188, 8
+    END
+END
